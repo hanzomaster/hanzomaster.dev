@@ -1,8 +1,8 @@
-# [chanhdai.com](https://chanhdai.com)
+# [hanzomaster.dev](https://hanzomaster.dev)
 
 A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
 
-Check out the live site: [chanhdai.com](https://chanhdai.com)
+Check out the live site: [hanzomaster.dev](https://hanzomaster.dev)
 
 <!-- <a href="https://frogdr.com/chanhdai.com?via=ncdai&utm_source=chanhdai.com">
   <picture>
@@ -17,12 +17,6 @@ Check out the live site: [chanhdai.com](https://chanhdai.com)
   <source media="(prefers-color-scheme: light)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1758274686">
   <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1758274686" alt="Screenshot">
 </picture>
-
-## GitAds Sponsored
-
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->
 
 ## Overview
 
@@ -64,16 +58,6 @@ Each component is well-documented through the Blog, featuring:
 ## Development
 
 Please refer to the [Development Guide](./DEVELOPMENT.md) for more details.
-
-## License
-
-Licensed under the [MIT license](./LICENSE).
-
-You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
-
-## Star History
-
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive)](https://starchart.cc/ncdai/chanhdai.com)
 
 ## Acknowledgments
 
