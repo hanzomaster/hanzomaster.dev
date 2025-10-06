@@ -1,18 +1,14 @@
-import {
-  ChevronsDownUpIcon,
-  ChevronsUpDownIcon,
-  InfinityIcon,
-  LinkIcon,
-} from "lucide-react";
+import { InfinityIcon, LinkIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
 import {
-  Collapsible,
+  CollapsibleChevronsIcon,
   CollapsibleContent,
   CollapsibleTrigger,
+  CollapsibleWithContext,
 } from "@/components/ui/collapsible";
 import { Tag } from "@/components/ui/tag";
 import { SimpleTooltip } from "@/components/ui/tooltip";
@@ -33,7 +29,7 @@ export function ProjectItem({
   const isOngoing = !end;
 
   return (
-    <Collapsible defaultOpen={project.isExpanded} asChild>
+    <CollapsibleWithContext defaultOpen={project.isExpanded} asChild>
       <div className={className}>
         <div className="flex items-center hover:bg-accent2">
           {project.logo ? (
@@ -57,7 +53,7 @@ export function ProjectItem({
           )}
 
           <div className="flex-1 border-l border-dashed border-edge">
-            <CollapsibleTrigger className="group/project flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
+            <CollapsibleTrigger className="flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
                   {project.title}
@@ -99,33 +95,34 @@ export function ProjectItem({
                 className="shrink-0 text-muted-foreground [&_svg]:size-4"
                 aria-hidden
               >
-                <ChevronsDownUpIcon className="hidden group-data-[state=open]/project:block" />
-                <ChevronsUpDownIcon className="hidden group-data-[state=closed]/project:block" />
+                <CollapsibleChevronsIcon />
               </div>
             </CollapsibleTrigger>
           </div>
         </div>
 
-        <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-          <div className="space-y-4 border-t border-dashed border-edge p-4">
-            {project.description && (
-              <Prose>
-                <Markdown>{project.description}</Markdown>
-              </Prose>
-            )}
+        <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+          <div className="border-t border-dashed border-edge">
+            <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
+              {project.description && (
+                <Prose>
+                  <Markdown>{project.description}</Markdown>
+                </Prose>
+              )}
 
-            {project.skills.length > 0 && (
-              <ul className="flex flex-wrap gap-1.5">
-                {project.skills.map((skill, index) => (
-                  <li key={index} className="flex">
-                    <Tag>{skill}</Tag>
-                  </li>
-                ))}
-              </ul>
-            )}
+              {project.skills.length > 0 && (
+                <ul className="flex flex-wrap gap-1.5">
+                  {project.skills.map((skill, index) => (
+                    <li key={index} className="flex">
+                      <Tag>{skill}</Tag>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </CollapsibleContent>
       </div>
-    </Collapsible>
+    </CollapsibleWithContext>
   );
 }

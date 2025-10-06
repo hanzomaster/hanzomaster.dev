@@ -42,14 +42,14 @@ export function CodeBlockCommand({
         }}
       >
         <div className="border-b px-4">
-          <TabsList className="h-auto translate-y-px gap-3 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:text-muted-foreground">
+          <TabsList className="h-auto translate-y-px gap-4 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:text-muted-foreground">
             {getIconForPackageManager(packageManager)}
 
             {Object.entries(tabs).map(([key]) => {
               return (
                 <TabsTrigger
                   key={key}
-                  className="h-10 rounded-none border-b border-transparent p-0 font-mono data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent dark:data-[state=active]:inset-shadow-none"
+                  className="h-10 rounded-none border-b border-transparent p-0 font-mono data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent"
                   value={key}
                 >
                   {key}

@@ -3,6 +3,7 @@ title: Work Experience
 description: Displays a list of work experiences with role details and durations.
 image: https://assets.chanhdai.com/images/blog/work-experience-component.webp?t=1750149861
 category: components
+icon: work-experience
 createdAt: 2025-06-16
 updatedAt: 2025-06-16
 ---
@@ -20,10 +21,18 @@ updatedAt: 2025-06-16
 
 <TabsListInstallType />
 
-<TabsContent value="cli" className="[&>figure]:mb-0">
+<TabsContent value="ncdai-cli" className="[&>figure]:mb-0">
 
 ```bash
-npx shadcn@latest add @ncdai/work-experience
+npx ncdai add work-experience
+```
+
+</TabsContent>
+
+<TabsContent value="shadcn-cli" className="[&>figure]:mb-0">
+
+```bash
+npx shadcn add @ncdai/work-experience
 ```
 
 </TabsContent>
@@ -35,7 +44,8 @@ npx shadcn@latest add @ncdai/work-experience
 <Step>Install the following dependencies</Step>
 
 ```bash
-npm install clsx tailwind-merge react-markdown @tailwindcss/typography lucide-react
+npm install clsx tailwind-merge react-markdown lucide-react
+npm install -D @tailwindcss/typography tw-animate-css
 ```
 
 <Step>Add a cn helper</Step>
@@ -47,10 +57,11 @@ npm install clsx tailwind-merge react-markdown @tailwindcss/typography lucide-re
   collapsible={false}
 />
 
-<Step>Add @tailwindcss/typography plugin</Step>
+<Step>Add plugin for tailwindcss</Step>
 
-```css title="globals.css" showLineNumbers {2}
+```css title="globals.css" showLineNumbers {2,3}
 @import "tailwindcss";
+@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 ```
 

@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/command";
 import type { Post } from "@/features/blog/types/post";
 import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
+import { useSound } from "@/hooks/use-sound";
 import { cn } from "@/lib/utils";
 import { copyText } from "@/utils/copy";
 
@@ -121,6 +122,8 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
   const [open, setOpen] = useState(false);
 
+  const playClick = useSound("/audio/ui-sounds/click.wav");
+
   useEffect(() => {
     const abortController = new AbortController();
     const { signal } = abortController;
@@ -167,12 +170,20 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     toast.success(message);
   }, []);
 
-  const handleThemeChange = useCallback(
-    (theme: "light" | "dark" | "system") => {
+  const createThemeHandler = useCallback(
+    (theme: "light" | "dark" | "system") => () => {
       setOpen(false);
+      playClick();
       setTheme(theme);
+
+      // if (!document.startViewTransition) {
+      //   setTheme(theme);
+      //   return;
+      // }
+
+      // document.startViewTransition(() => setTheme(theme));
     },
-    [setTheme]
+    [playClick, setTheme]
   );
 
   const { blogLinks, componentLinks } = useMemo(
@@ -191,10 +202,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     <>
       <Button
         variant="secondary"
-        className={cn(
-          "h-8 gap-1.5 rounded-full bg-zinc-50 px-2.5 text-muted-foreground select-none hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-900",
-          "not-dark:border dark:inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/15"
-        )}
+        className="h-8 gap-1.5 rounded-full border bg-zinc-50 px-2.5 text-muted-foreground select-none hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-900"
         onClick={() => setOpen(true)}
       >
         <svg
@@ -316,21 +324,21 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
           <CommandGroup heading="Theme">
             <CommandItem
               keywords={["theme"]}
-              onSelect={() => handleThemeChange("light")}
+              onSelect={createThemeHandler("light")}
             >
               <SunIcon />
               Light
             </CommandItem>
             <CommandItem
               keywords={["theme"]}
-              onSelect={() => handleThemeChange("dark")}
+              onSelect={createThemeHandler("dark")}
             >
               <MoonStarIcon />
               Dark
             </CommandItem>
             <CommandItem
               keywords={["theme"]}
-              onSelect={() => handleThemeChange("system")}
+              onSelect={createThemeHandler("system")}
             >
               <Icons.contrast />
               Auto

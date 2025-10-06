@@ -48,5 +48,6 @@ function ChanhDaiMarkMotion() {
 
 export function SiteHeaderMark() {
   const pathname = usePathname();
-  return pathname === "/" ? <ChanhDaiMarkMotion /> : <ChanhDaiMark />;
+  const isHome = ["/", "/index"].includes(pathname);
+  return isHome ? <ChanhDaiMarkMotion /> : <ChanhDaiMark />;
 }

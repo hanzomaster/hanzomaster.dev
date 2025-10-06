@@ -1,10 +1,12 @@
 import type { TOCItemType } from "fumadocs-core/server";
-import { ChevronsDownUpIcon, ChevronsUpDownIcon, TextIcon } from "lucide-react";
+import { TextIcon } from "lucide-react";
 
+import type { Collapsible } from "@/components/ui/collapsible";
 import {
-  Collapsible,
+  CollapsibleChevronsIcon,
   CollapsibleContent,
   CollapsibleTrigger,
+  CollapsibleWithContext,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 
@@ -21,21 +23,20 @@ export function InlineTOC({
   }
 
   return (
-    <Collapsible
+    <CollapsibleWithContext
       className={cn("not-prose rounded-lg bg-code font-sans", className)}
       {...props}
     >
-      <CollapsibleTrigger className="group/toc inline-flex w-full items-center gap-2 p-3 pl-4 text-sm font-medium [&_svg]:size-4">
-        <TextIcon />
+      <CollapsibleTrigger className="group/toc inline-flex w-full items-center gap-2 py-2.5 pr-2 pl-4 text-sm font-medium [&_svg]:size-4">
+        <TextIcon className="-translate-x-0.5" />
         {children ?? "On this page"}
         <div className="ml-auto shrink-0 text-muted-foreground" aria-hidden>
-          <ChevronsDownUpIcon className="hidden group-data-[state=open]/toc:block" />
-          <ChevronsUpDownIcon className="hidden group-data-[state=closed]/toc:block" />
+          <CollapsibleChevronsIcon />
         </div>
       </CollapsibleTrigger>
 
-      <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-        <ul className="flex flex-col px-4 pb-3 text-sm text-muted-foreground">
+      <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-fade-up data-[state=open]:animate-collapsible-fade-down">
+        <ul className="flex flex-col px-4 pb-2 text-sm text-muted-foreground">
           {items.map((item) => (
             <li
               key={item.url}
@@ -54,6 +55,6 @@ export function InlineTOC({
           ))}
         </ul>
       </CollapsibleContent>
-    </Collapsible>
+    </CollapsibleWithContext>
   );
 }
