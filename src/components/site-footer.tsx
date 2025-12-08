@@ -17,14 +17,23 @@ export function SiteFooter() {
         <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
           Built by{" "}
           <a
-            className="link transition-[color] hover:text-foreground"
-            href="https://x.com/iamncdai"
+            className="link"
+            href="https://github.com/hanzomaster"
             target="_blank"
             rel="noopener"
           >
-            ncdai
+            hanzomaster
           </a>
-          . The source code is available on{" "}
+          . Based on{" "}
+          <a
+            className="link"
+            href="https://github.com/ncdai/chanhdai.com"
+            target="_blank"
+            rel="noopener"
+          >
+            chanhdai.com
+          </a>
+          . Source on{" "}
           <a
             className="link transition-[color] hover:text-foreground"
             href={SOURCE_CODE_GITHUB_URL}
@@ -79,20 +88,8 @@ export function SiteFooter() {
             <Separator className="max-sm:hidden" />
 
             <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://x.com/iamncdai?utm_source=chanhdai.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.x className="size-4" />
-              <span className="sr-only">X</span>
-            </a>
-
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://github.com/ncdai?utm_source=chanhdai.com"
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://github.com/hanzomaster?utm_source=hanzomaster.dev"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -103,8 +100,8 @@ export function SiteFooter() {
             <Separator />
 
             <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://www.linkedin.com/in/ncdai?utm_source=chanhdai.com"
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://www.linkedin.com/in/hanzomaster/?utm_source=hanzomaster.dev"
               target="_blank"
               rel="noopener noreferrer"
             >
