@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/hanzomaster/hanzomaster.dev/compare/v1.0.0...v1.0.1) (2025-12-22)
+
+
+### Bug Fixes
+
+* trigger initial deployment ([80690af](https://github.com/hanzomaster/hanzomaster.dev/commit/80690af2ec536e65df454c097d85d285893dbbb2))
+
 # 1.0.0 (2025-12-22)
 
 
