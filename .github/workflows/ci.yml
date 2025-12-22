@@ -44,7 +44,7 @@ jobs:
                       @semantic-release/commit-analyzer@13
                       @semantic-release/release-notes-generator@14
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
     # Job 2: Build & Deploy Production
     build-production:
