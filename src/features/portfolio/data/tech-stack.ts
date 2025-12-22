@@ -1,6 +1,7 @@
 import type { TechStack } from "../types/tech-stack"
 
 export const TECH_STACK: TechStack[] = [
+  // Languages
   {
     key: "typescript",
     title: "TypeScript",
@@ -14,23 +15,18 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Language"],
   },
   {
-    key: "python",
-    title: "Python",
-    href: "https://www.python.org/",
-    categories: ["Language"],
-  },
-  {
-    key: "php",
-    title: "PHP",
-    href: "https://www.php.net/",
-    categories: ["Language"],
-  },
-  {
     key: "java",
     title: "Java",
     href: "https://www.java.com/",
     categories: ["Language"],
   },
+  {
+    key: "python",
+    title: "Python",
+    href: "https://www.python.org/",
+    categories: ["Language"],
+  },
+  // Runtime & Backend
   {
     key: "nodejs",
     title: "Node.js",
@@ -43,6 +39,19 @@ export const TECH_STACK: TechStack[] = [
     href: "https://bun.sh/",
     categories: ["Runtime Environment"],
   },
+  {
+    key: "spring",
+    title: "Spring",
+    href: "https://spring.io/",
+    categories: ["Framework"],
+  },
+  {
+    key: "django",
+    title: "Django",
+    href: "https://www.djangoproject.com/",
+    categories: ["Framework"],
+  },
+  // Frontend
   {
     key: "react",
     title: "React",
@@ -69,88 +78,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Library", "Component Library"],
     theme: true,
   },
-  {
-    key: "radixui",
-    title: "Radix UI",
-    href: "https://www.radix-ui.com/",
-    categories: ["Library", "Component Library"],
-    theme: true,
-  },
-  {
-    key: "base-ui",
-    title: "Base UI",
-    href: "https://base-ui.com/",
-    categories: ["Library", "Component Library"],
-    theme: true,
-  },
-  {
-    key: "motion",
-    title: "Motion",
-    href: "https://motion.dev/",
-    categories: ["Library", "Animation"],
-  },
-  {
-    key: "tanstack",
-    title: "TanStack",
-    href: "https://tanstack.com/",
-    categories: ["Library"],
-    theme: true,
-  },
-  {
-    key: "mobx-state-tree",
-    title: "MobX-State-Tree",
-    href: "https://mobx-state-tree.js.org/",
-    categories: ["State Management"],
-  },
-  {
-    key: "redux",
-    title: "Redux",
-    href: "https://redux.js.org/",
-    categories: ["State Management"],
-  },
-  {
-    key: "antd",
-    title: "Ant Design",
-    href: "https://ant.design/",
-    categories: ["Library", "UI Library"],
-  },
-  {
-    key: "react-router",
-    title: "React Router",
-    href: "https://reactrouter.com/",
-    categories: ["Library", "Navigation"],
-    theme: true,
-  },
-  {
-    key: "react-navigation",
-    title: "React Navigation",
-    href: "https://reactnavigation.org/",
-    categories: ["Library", "Navigation"],
-  },
-  {
-    key: "loopback",
-    title: "LoopBack",
-    href: "https://loopback.io/",
-    categories: ["Framework"],
-  },
-  {
-    key: "laravel",
-    title: "Laravel",
-    href: "https://laravel.com/",
-    categories: ["Framework"],
-  },
-  {
-    key: "git",
-    title: "Git",
-    href: "https://git-scm.com/",
-    categories: ["Version Control"],
-  },
-  {
-    key: "docker",
-    title: "Docker",
-    href: "https://www.docker.com/",
-    categories: ["Containerization"],
-  },
+  // Databases
   {
     key: "mysql",
     title: "MySQL",
@@ -164,27 +92,47 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Database"],
   },
   {
+    key: "postgres",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
+    categories: ["Database"],
+  },
+  {
+    key: "neo4j",
+    title: "Neo4j",
+    href: "https://neo4j.com/",
+    categories: ["Database"],
+  },
+  {
+    key: "clickhouse",
+    title: "ClickHouse",
+    href: "https://clickhouse.com/",
+    categories: ["Database"],
+  },
+  {
     key: "redis",
     title: "Redis",
     href: "https://redis.io/",
     categories: ["Database"],
   },
+  // DevOps & Tools
   {
-    key: "figma",
-    title: "Figma",
-    href: "https://www.figma.com/",
-    categories: ["Tools", "Design"],
+    key: "docker",
+    title: "Docker",
+    href: "https://www.docker.com/",
+    categories: ["Containerization"],
   },
   {
-    key: "ps",
-    title: "Adobe Photoshop",
-    href: "https://www.adobe.com/vn_en/products/photoshop.html",
-    categories: ["Tools", "Design"],
+    key: "git",
+    title: "Git",
+    href: "https://git-scm.com/",
+    categories: ["Version Control"],
   },
+  // AI
   {
-    key: "chatgpt",
-    title: "ChatGPT",
-    href: "https://chatgpt.com/",
+    key: "claude",
+    title: "Claude",
+    href: "https://claude.ai/",
     categories: ["Tools", "AI"],
     theme: true,
   },
