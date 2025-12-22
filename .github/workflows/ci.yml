@@ -1,0 +1,141 @@
+name: CI/CD
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+permissions:
+    contents: write
+    packages: write
+    issues: write
+    pull-requests: write
+
+jobs:
+    # Job 1: Release (only on push to main)
+    release:
+        runs-on: blacksmith-2vcpu-ubuntu-2404
+        if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
+        outputs:
+            version: ${{ steps.semantic.outputs.new_release_version }}
+            released: ${{ steps.semantic.outputs.new_release_published }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22"
+
+            - name: Run semantic-release
+              id: semantic
+              uses: cycjimmy/semantic-release-action@v4
+              with:
+                  semantic_version: 24
+                  extra_plugins: |
+                      @semantic-release/changelog@6
+                      @semantic-release/git@10
+                      @semantic-release/github@11
+                      @semantic-release/commit-analyzer@13
+                      @semantic-release/release-notes-generator@14
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Job 2: Build & Deploy Production
+    build-production:
+        runs-on: blacksmith-2vcpu-ubuntu-2404
+        needs: release
+        if: needs.release.outputs.released == 'true'
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Set image name
+              env:
+                  REPO: ${{ github.repository }}
+              run: |
+                  echo "IMAGE_NAME=$(echo ghcr.io/$REPO | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
+
+            - name: Setup Blacksmith Builder
+              uses: useblacksmith/setup-docker-builder@v1
+
+            - name: Login to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and push Docker image
+              uses: useblacksmith/build-push-action@v2
+              with:
+                  context: .
+                  push: true
+                  platforms: linux/amd64
+                  tags: |
+                      ${{ env.IMAGE_NAME }}:v${{ needs.release.outputs.version }}
+                      ${{ env.IMAGE_NAME }}:latest
+
+            - name: Trigger Coolify webhook
+              env:
+                  COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
+                  COOLIFY_WEBHOOK_TOKEN: ${{ secrets.COOLIFY_WEBHOOK_TOKEN }}
+                  VERSION: ${{ needs.release.outputs.version }}
+                  REPOSITORY: ${{ github.repository }}
+              run: |
+                  curl -fsSL -X POST "$COOLIFY_WEBHOOK_URL" \
+                  -H "Authorization: Bearer $COOLIFY_WEBHOOK_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  -d "{\"version\": \"v$VERSION\", \"repository\": \"$REPOSITORY\"}"
+
+    # Job 3: Build & Deploy Preview (PRs only)
+    build-preview:
+        runs-on: blacksmith-2vcpu-ubuntu-2404
+        if: github.event_name == 'pull_request'
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Set image name and version
+              env:
+                  REPO: ${{ github.repository }}
+                  PR_NUMBER: ${{ github.event.pull_request.number }}
+              run: |
+                  echo "IMAGE_NAME=$(echo ghcr.io/$REPO | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
+                  echo "VERSION=pr-${PR_NUMBER}-preview" >> "$GITHUB_ENV"
+
+            - name: Setup Blacksmith Builder
+              uses: useblacksmith/setup-docker-builder@v1
+
+            - name: Login to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and push Docker image
+              uses: useblacksmith/build-push-action@v2
+              with:
+                  context: .
+                  push: true
+                  platforms: linux/amd64
+                  tags: |
+                      ${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+
+            - name: Trigger Coolify preview webhook
+              env:
+                  COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_PREVIEW_WEBHOOK_URL }}
+                  COOLIFY_WEBHOOK_TOKEN: ${{ secrets.COOLIFY_WEBHOOK_TOKEN }}
+                  VERSION: ${{ env.VERSION }}
+                  REPOSITORY: ${{ github.repository }}
+              run: |
+                  curl -fsSL -X POST "$COOLIFY_WEBHOOK_URL" \
+                  -H "Authorization: Bearer $COOLIFY_WEBHOOK_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  -d "{\"version\": \"$VERSION\", \"repository\": \"$REPOSITORY\"}"
