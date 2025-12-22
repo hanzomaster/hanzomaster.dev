@@ -30,7 +30,8 @@ export const USER: User = {
 - **Backend Engineer** with **4+ years of experience**, specializing in designing and implementing realtime, high throughput systems.
 - Passionate about building scalable, reliable backend infrastructure.
 `,
-  avatar: "https://cdn.simpleicons.org/linkedin/0A66C2",
+  avatar:
+    "https://ui-avatars.com/api/?name=Thinh+Tran&size=200&background=09090b&color=fff",
   // TODO: Replace with your OG image URL (S3)
   ogImage:
     "https://ui-avatars.com/api/?name=Thinh+Tran&size=1200&background=09090b&color=fff",

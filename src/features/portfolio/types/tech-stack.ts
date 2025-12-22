@@ -18,4 +18,6 @@ export type TechStack = {
   categories: string[];
   /** If true, use theme-specific icons for dark/light mode. */
   theme?: boolean;
+  /** Optional custom icon URL to override the default pattern. */
+  iconUrl?: string;
 };

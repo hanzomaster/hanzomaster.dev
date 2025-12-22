@@ -62,7 +62,10 @@ export function TeckStack() {
                         </>
                       ) : (
                         <Image
-                          src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
+                          src={
+                            tech.iconUrl ??
+                            `https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`
+                          }
                           alt={`${tech.title} icon`}
                           width={32}
                           height={32}
