@@ -20,11 +20,24 @@ Check out the live site: [chanhdai.com](https://chanhdai.com)
 - Clean & modern design
 - Light/Dark themes
 - vCard integration
+- Curated bookmarks to showcase inspiration and resources
 - SEO optimized ([JSON-LD schema](https://json-ld.org), sitemap, robots)
 - AI-ready with [/llms.txt](https://llmstxt.org)
 - Spam-protected email
 - Installable as PWA
 - Analytics with [PostHog](https://posthog.com) & consent management via [c15t](https://c15t.com)
+
+### Bookmarks
+
+A curated collection of bookmarks showcasing articles and resources that have influenced your design and development philosophy. Features include:
+
+- Date-sorted display (newest first)
+- Optional author attribution
+- Custom brand icons for visual identification
+- Collapsible list with "Show More" toggle
+- External links open in new tabs
+
+For adding and managing bookmarks, see [Bookmarks Documentation](./docs/BOOKMARKS.md).
 
 ### Blog
 
