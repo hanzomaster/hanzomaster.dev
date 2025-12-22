@@ -17,5 +17,7 @@ export type TechStack = {
   /** Category tags used for grouping/filtering. */
   categories: string[]
   /** If true, use theme-specific icons for dark/light mode. */
-  theme?: boolean
-}
+  theme?: boolean;
+  /** Optional custom icon URL to override the default pattern. */
+  iconUrl?: string;
+};

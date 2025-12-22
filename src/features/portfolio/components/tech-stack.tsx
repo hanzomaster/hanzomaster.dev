@@ -35,8 +35,11 @@ export function TechStack() {
                     {tech.theme ? (
                       <>
                         <Image
-                          src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
-                          alt={`${tech.title} light icon`}
+                          src={
+                            tech.iconUrl ??
+                            `https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`
+                          }
+                          alt={`${tech.title} icon`}
                           width={32}
                           height={32}
                           className="hidden [html.light_&]:block"

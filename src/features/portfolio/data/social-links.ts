@@ -8,7 +8,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: "https://github.com/hanzomaster",
   },
   {
-    icon: "https://cdn.simpleicons.org/linkedin/0A66C2",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg",
     title: "LinkedIn",
     description: "hanzomaster",
     href: "https://www.linkedin.com/in/hanzomaster/",

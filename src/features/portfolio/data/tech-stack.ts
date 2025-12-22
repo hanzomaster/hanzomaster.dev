@@ -44,12 +44,16 @@ export const TECH_STACK: TechStack[] = [
     title: "Spring",
     href: "https://spring.io/",
     categories: ["Framework"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
   },
   {
     key: "django",
     title: "Django",
     href: "https://www.djangoproject.com/",
     categories: ["Framework"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
   },
   // Frontend
   {
@@ -96,18 +100,24 @@ export const TECH_STACK: TechStack[] = [
     title: "PostgreSQL",
     href: "https://www.postgresql.org/",
     categories: ["Database"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
   },
   {
     key: "neo4j",
     title: "Neo4j",
     href: "https://neo4j.com/",
     categories: ["Database"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neo4j/neo4j-original.svg",
   },
   {
     key: "clickhouse",
     title: "ClickHouse",
     href: "https://clickhouse.com/",
     categories: ["Database"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/clickhouse/clickhouse-original.svg",
   },
   {
     key: "redis",
@@ -134,6 +144,7 @@ export const TECH_STACK: TechStack[] = [
     title: "Claude",
     href: "https://claude.ai/",
     categories: ["Tools", "AI"],
-    theme: true,
+    iconUrl:
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/icons/claude.svg",
   },
 ]
