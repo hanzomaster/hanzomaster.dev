@@ -1,6 +1,6 @@
 import type { User } from "@/features/portfolio/types/user";
 
-export const USER = {
+export const USER: User = {
   firstName: "Thịnh",
   lastName: "Trần",
   displayName: "Thinh Tran",
@@ -46,4 +46,4 @@ export const USER = {
     "software engineer",
   ],
   dateCreated: "2025-12-08", // YYYY-MM-DD
-} satisfies User;
+};
