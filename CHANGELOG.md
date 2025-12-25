@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/hanzomaster/hanzomaster.dev/compare/v1.0.1...v1.1.0) (2025-12-25)
+
+
+### Features
+
+* **portfolio:** update professional profile with work experience and projects ([f2413f1](https://github.com/hanzomaster/hanzomaster.dev/commit/f2413f1964958597da041e1f96d6fca877735be5))
+
 ## [1.0.1](https://github.com/hanzomaster/hanzomaster.dev/compare/v1.0.0...v1.0.1) (2025-12-22)
 
 
