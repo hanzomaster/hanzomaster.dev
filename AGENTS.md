@@ -97,23 +97,104 @@ pnpm dev  # Runs on port 1408
 pnpm build
 ```
 
+### Build, Lint & Test Commands
+
+**Development & Build**:
+
+```bash
+pnpm dev              # Start dev server on port 1408
+pnpm build            # Production build
+pnpm start            # Start production server
+pnpm preview          # Build and preview locally
+```
+
+**Code Quality & Formatting**:
+
+```bash
+pnpm lint             # Run ESLint checks
+pnpm lint:fix         # Auto-fix ESLint issues
+pnpm format:check     # Check Prettier formatting
+pnpm format:write     # Auto-format with Prettier
+pnpm check-types      # Type-check with TypeScript
+```
+
+**Registry**:
+
+```bash
+pnpm registry:internal:build   # Build registry internally
+pnpm registry:build            # Build complete shadcn registry
+```
+
 ### Code Standards
 
-- **TypeScript**: Strict mode enabled
-- **ESLint**: Next.js configuration
-- **Prettier**: Code formatting
-- **File naming**: kebab-case for files and component files
+- **TypeScript**: Strict mode enabled, `noEmit: true`
+- **ESLint**: Next.js config with Prettier integration
+- **Prettier**: 80-char line width, 2-space tabs, trailing commas (es5), no single quotes
+- **Imports**: Sorted via `simple-import-sort` plugin (enforced)
+- **Type imports**: Must use `import type` syntax (enforced via `@typescript-eslint/consistent-type-imports`)
+- **File naming**: kebab-case for files, PascalCase for components
+- **Node**: v22.x required
+- **Package manager**: pnpm v9+
 
-### Coding Guidelines
+### Code Style Guidelines
 
-When writing code for this project, follow these principles:
+**TypeScript & Types**
 
-- Write type-safe TypeScript code with explicit types when necessary
-- Use descriptive variable and function names that make code self-documenting
-- Add comments only for complex logic or non-obvious behavior (focus on "why" not "what")
-- No emojis in code, comments, or commit messages
-- Use JSDoc for public APIs when the signature alone isn't clear
-- Follow SOLID principles: keep functions small, focused, and easy to understand
+- Explicit type annotations for function parameters and return values
+- Use `import type` for type-only imports (enforced by ESLint)
+- Leverage TypeScript's type system to catch errors early
+- No `any` types unless absolutely unavoidable with explicit `// @ts-expect-error` comments
+
+**Documentation & Comments**
+
+- Add comments only for non-obvious logic, complex algorithms, or function purpose
+- Avoid restating code; assume reader understands the language
+- Use JSDoc for public APIs and exported functions
+- Keep comments focused on "why" not "what"
+
+**Naming Conventions**
+
+- **Components & Classes**: PascalCase (e.g., `ThemeSwitcher`)
+- **Functions & Variables**: camelCase (e.g., `formatDate`, `isVisible`)
+- **Files & Directories**: kebab-case (e.g., `theme-switcher`, `use-sound.ts`)
+- **Constants**: UPPER_SNAKE_CASE only for true constants (e.g., `MAX_RETRIES`)
+- **React hooks**: Prefix with `use` (e.g., `useConfigState`, `useMediaQuery`)
+- Use descriptive names that reveal intent; avoid abbreviations
+
+**Code Organization**
+
+- Keep functions focused on single responsibility
+- Import groups ordered: external → internal → relative (enforced by `simple-import-sort`)
+- Group related logic into separate utility files
+- Avoid deeply nested conditionals; extract to helper functions
+- Use early returns to reduce nesting
+
+**Error Handling**
+
+- Validate inputs at function boundaries
+- Use Zod for schema validation (analytics events use this)
+- Throw meaningful errors with context, not generic messages
+- Catch only specific error types when possible
+- Log errors with sufficient context for debugging
+
+**React & Components**
+
+- Use functional components with hooks
+- Memoize expensive computations with `useMemo` or `useCallback` when needed
+- Component files export single default component + named types
+- Use TypeScript for component props: `interface ComponentProps { ... }`
+- Props should be interface-based, not inline type
+- Use Tailwind CSS v4 for styling, no inline styles
+
+**Code Style Enforcement**
+
+- No emojis in code, comments, or commits
+- Semi-colons required (enforced by Prettier)
+- Double quotes required (enforced by Prettier)
+- Trailing commas in objects/arrays (enforced by Prettier)
+- 2-space indentation (enforced by Prettier)
+- Auto-format on save: run `pnpm lint:fix && pnpm format:write` before committing
+- Husky pre-commit hooks enforce these automatically
 
 ### Component Development
 
@@ -246,3 +327,38 @@ pnpm lint           # Run ESLint
 pnpm format:write   # Format code with Prettier
 pnpm check-types    # TypeScript type checking
 ```
+
+### Docker
+
+The project uses Docker for containerized deployment. The `docker-compose.yml` enforces `linux/amd64` platform to ensure consistent builds across different host machines.
+
+```bash
+# Build Docker image (uses docker-compose.yml for platform config)
+docker compose build
+
+# Run the container locally
+docker compose up -d
+
+# Build and push to registry
+docker compose build && docker push ghcr.io/algomasterllc/hanzomaster.dev:latest
+```
+
+**Image**: `ghcr.io/algomasterllc/hanzomaster.dev:latest`
+
+## Contributing
+
+### Code Quality
+
+- Run `pnpm lint` before committing
+- Use `pnpm format:write` for code formatting
+- Check types with `pnpm check-types`
+
+### Testing Registry Components
+
+- Test components in isolation
+- Verify registry build process
+- Test installation via shadcn CLI
+
+---
+
+**Note**: This is a personal portfolio project. When using as a template, ensure all personal information is removed and replaced with your own content.
