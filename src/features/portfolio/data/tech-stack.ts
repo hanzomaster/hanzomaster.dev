@@ -26,6 +26,12 @@ export const TECH_STACK: TechStack[] = [
     href: "https://www.python.org/",
     categories: ["Language"],
   },
+  {
+    key: "go",
+    title: "Go",
+    href: "https://go.dev/",
+    categories: ["Language"],
+  },
   // Runtime & Backend
   {
     key: "nodejs",
@@ -54,6 +60,14 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Framework"],
     iconUrl:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
+  },
+  {
+    key: "nestjs",
+    title: "NestJS",
+    href: "https://nestjs.com/",
+    categories: ["Framework"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
   },
   // Frontend
   {
@@ -125,6 +139,23 @@ export const TECH_STACK: TechStack[] = [
     href: "https://redis.io/",
     categories: ["Database"],
   },
+  {
+    key: "oracle",
+    title: "Oracle Database",
+    href: "https://www.oracle.com/database/",
+    categories: ["Database"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg",
+  },
+  // Message Brokers & Streaming
+  {
+    key: "kafka",
+    title: "Apache Kafka",
+    href: "https://kafka.apache.org/",
+    categories: ["Message Broker", "Streaming"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
+  },
   // DevOps & Tools
   {
     key: "docker",
@@ -137,6 +168,22 @@ export const TECH_STACK: TechStack[] = [
     title: "Git",
     href: "https://git-scm.com/",
     categories: ["Version Control"],
+  },
+  {
+    key: "aws",
+    title: "AWS",
+    href: "https://aws.amazon.com/",
+    categories: ["Cloud"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+  },
+  {
+    key: "jira",
+    title: "Jira",
+    href: "https://www.atlassian.com/software/jira",
+    categories: ["Project Management"],
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg",
   },
   // AI
   {
