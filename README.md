@@ -1,11 +1,6 @@
-# [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
+# hanzomaster.dev
 
-A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
-
-Check out the live site: [chanhdai.com](https://chanhdai.com)
-
-[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?t=1764345394#gh-dark-mode-only)](https://github.com/ncdai/chanhdai.com#gh-dark-mode-only)
-[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?t=1764345394#gh-light-mode-only)](https://github.com/ncdai/chanhdai.com#gh-light-mode-only)
+A minimal, pixel-perfect dev portfolio, component registry, and blog built with modern web technologies.
 
 ## Overview
 
@@ -77,25 +72,24 @@ Built with privacy in mind:
 
 Please refer to the [Development Guide](./DEVELOPMENT.md) for more details.
 
+## Docker
+
+Build and run with Docker Compose (enforces `linux/amd64` platform):
+
+```bash
+# Build image
+docker compose build
+
+# Run locally
+docker compose up -d
+
+# Build and push to registry
+docker compose build && docker push ghcr.io/algomasterllc/hanzomaster.dev:latest
+```
+
 ## License
 
 Licensed under the [MIT license](./LICENSE).
-
-You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
-
-## Contributors
-
-[![Contributors](https://contrib.rocks/image?repo=ncdai/chanhdai.com)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
-
-> Made with [contrib.rocks](https://contrib.rocks)
-
-## Stats
-
-![Stats](https://repobeats.axiom.co/api/embed/583bf08fbdef57c3921d3cfda902d546df3e6ed1.svg "Repobeats analytics image")
-
-## Star History
-
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23d37f2c)](https://starchart.cc/ncdai/chanhdai.com)
 
 ## Acknowledgments
 
@@ -114,8 +108,4 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 - [c15t](https://c15t.com)
 - And many other open-source libraries used in `package.json`
 
-## GitAds Sponsored
-
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->
+Based on [chanhdai.com](https://github.com/ncdai/chanhdai.com) by [@ncdai](https://github.com/ncdai).
