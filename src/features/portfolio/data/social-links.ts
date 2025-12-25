@@ -13,11 +13,16 @@ export const SOCIAL_LINKS: SocialLink[] = [
     description: "hanzomaster",
     href: "https://www.linkedin.com/in/hanzomaster/",
   },
-  // TODO: Add more social links as needed
-  // {
-  //   icon: "https://cdn.simpleicons.org/x/000000/white",
-  //   title: "X (formerly Twitter)",
-  //   description: "@hanzomaster",
-  //   href: "https://x.com/hanzomaster",
-  // },
+  {
+    icon: "https://cdn.simpleicons.org/stackoverflow/F58025",
+    title: "Stack Overflow",
+    description: "11399551",
+    href: "https://stackoverflow.com/users/11399551",
+  },
+  {
+    icon: "https://cdn.simpleicons.org/leetcode/FFA116",
+    title: "LeetCode",
+    description: "hanzomaster",
+    href: "https://leetcode.com/u/hanzomaster/",
+  },
 ];

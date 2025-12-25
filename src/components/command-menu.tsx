@@ -25,7 +25,6 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import { toast } from "sonner";
 
 import {
   CommandDialog,
@@ -39,7 +38,6 @@ import type { Post } from "@/features/blog/types/post";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import { useSound } from "@/hooks/use-sound";
 import { trackEvent } from "@/lib/events";
-import { copyText } from "@/utils/copy";
 
 import { ComponentIcon, Icons } from "./icons";
 import { Button } from "./ui/button";
@@ -152,7 +150,7 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
 export function CommandMenu({ posts }: { posts: Post[] }) {
   const router = useRouter();
 
-  const { setTheme, resolvedTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const [open, setOpen] = useState(false);
 
@@ -196,21 +194,6 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
     },
     [router]
   );
-
-  const handleCopyText = useCallback((text: string, message: string) => {
-    setOpen(false);
-
-    trackEvent({
-      name: "command_menu_action",
-      properties: {
-        action: "copy",
-        text: text,
-      },
-    });
-
-    copyText(text);
-    toast.success(message);
-  }, []);
 
   const createThemeHandler = useCallback(
     (theme: "light" | "dark" | "system") => () => {
