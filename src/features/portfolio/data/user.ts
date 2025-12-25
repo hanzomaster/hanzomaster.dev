@@ -19,12 +19,11 @@ export const USER: User = {
   website: "https://hanzomaster.dev",
   jobTitle: "Software Engineer",
   jobs: [
-    // TODO: Add your current job(s) here
-    // {
-    //   title: "Backend Engineer",
-    //   company: "Company Name",
-    //   website: "https://company.com",
-    // },
+    {
+      title: "Specialist",
+      company: "MB Bank",
+      website: "https://www.mbbank.com.vn/",
+    },
   ],
   about: `
 - **Backend Engineer** with **4+ years of experience**, specializing in designing and implementing realtime, high throughput systems.
