@@ -20,12 +20,12 @@ import {
   SunMediumIcon,
   TextIcon,
   TextInitialIcon,
-} from "lucide-react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
+} from "lucide-react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useTheme } from "next-themes"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { useHotkeys } from "react-hotkeys-hook"
 
 import {
   CommandDialog,
@@ -34,16 +34,18 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import type { Post } from "@/features/blog/types/post";
-import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
-import { useSound } from "@/hooks/use-sound";
-import { trackEvent } from "@/lib/events";
+} from "@/components/ui/command"
+import type { PostPreview } from "@/features/blog/types/post"
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
+import { useDuckFollowerVisibility } from "@/hooks/use-duck-follower-visibility"
+import { useSound } from "@/hooks/use-sound"
+import { trackEvent } from "@/lib/events"
+import { cn } from "@/lib/utils"
 
-import { ComponentIcon, Icons } from "./icons";
-import { Button } from "./ui/button";
-import { Kbd, KbdGroup } from "./ui/kbd";
-import { Separator } from "./ui/separator";
+import { ComponentIcon, Icons } from "./icons"
+import { Button } from "./ui/button"
+import { Kbd, KbdGroup } from "./ui/kbd"
+import { Separator } from "./ui/separator"
 
 type CommandLinkItem = {
   title: string
@@ -151,7 +153,7 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
 export function CommandMenu({ posts }: { posts: PostPreview[] }) {
   const router = useRouter()
 
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
 
   const [open, setOpen] = useState(false)
 
